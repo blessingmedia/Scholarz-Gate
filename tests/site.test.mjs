@@ -1,9 +1,13 @@
 import test from 'node:test';import assert from 'node:assert/strict';
 import {handle} from '../src/app.mjs';
 const req=p=>handle(new Request('https://test.scholarz.invalid'+p));
-test('home responds with matching ApplyMate shell and content',async()=>{const r=req('/');const s=await r.text();assert.equal(r.status,200);assert.match(s,/ApplyMate/);assert.match(s,/Welcome To ApplyMate/);assert.match(s,/Google AI Courses 2026/);assert.match(s,/assets\/app\.js/)});
+test('home responds with matching ApplyMate shell and content',async()=>{const r=req('/');const s=await r.text();assert.equal(r.status,200);assert.match(s,/ApplyMate/);assert.match(s,/Scholarz Nation/);assert.match(s,/href="\/apply"/);assert.match(s,/assets\/app\.js/)});
 test('article has distinct canonical and verification/source URLs',async()=>{const s=await req('/applymate/google-ai-courses-free-2026').text();assert.match(s,/property="og:type" content="article"/);assert.match(s,/Official Google Skills/);assert.match(s,/class="toc"/);assert.match(s,/canonical/)});
 test('live search and category filtering work',async()=>{assert.match(await req('/search?q=google').text(),/Google AI Courses 2026/);assert.match(await req('/search?q=madeup-courses').text(),/No matches yet/);assert.match(await req('/search/label/Internships').text(),/No matches yet/);assert.match(await req('/search/label/Online%20Courses').text(),/Google AI Courses 2026/)});
 test('no private unpublished data exposed and 404 is honest',async()=>{assert.equal(req('/missing').status,404);assert.equal(req('/api/opportunities').status,200);assert.equal(handle(new Request('https://test.scholarz.invalid/api/opportunities',{method:'POST'})).status,405)});
 test('RSS, sitemap, robots and css/javascript are served correctly',async()=>{assert.match(await req('/rss.xml').text(),/<rss version="2.0"/);assert.match(await req('/sitemap.xml').text(),/<urlset/);assert.match(await req('/robots.txt').text(),/Sitemap:/);assert.match(await req('/assets/app.css').text(),/\.mainL/);assert.match(await req('/assets/app.js').text(),/applymate:saved/)});
 test('unsafe slug does not produce bogus article',()=>{assert.equal(req('/applymate/not-a-real-post').status,404)});
+
+test('ApplyMate keeps original carousel and verified content',async()=>{const s=await req('/apply').text();assert.match(s,/Welcome To ApplyMate/);assert.match(s,/Google AI Courses 2026/)});
+test('Scholarz Global does not fabricate student profiles',async()=>{const s=await req('/global').text();assert.match(s,/No public profiles have been approved/)});
+test('robot rules avoid indexing temporary workers domain',async()=>{const r=handle(new Request('https://preview.workers.dev/robots.txt'));assert.match(await r.text(),/Disallow/);assert.match(await req('/llms.txt').text(),/Scholarz Nation/)});
