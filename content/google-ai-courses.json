@@ -1,0 +1,44 @@
+{
+  "id": "opp_google_ai_2026",
+  "vertical": "applymate",
+  "kind": "course_collection",
+  "status": "published",
+  "slug": "google-ai-courses-free-2026",
+  "legacyUrls": [],
+  "title": "Google AI Courses 2026: Free Learning, Badges & Where to Start",
+  "summary": "Seven Google Skills courses to explore, the difference between badges and certificates, and practical advice for African students.",
+  "description": "A verification-first guide to seven Google AI learning opportunities and their credentials.",
+  "datePublished": "2026-10-26",
+  "lastVerifiedAt": "2026-10-26T00:00:00Z",
+  "nextReviewAt": "2026-11-09T00:00:00Z",
+  "author": "ApplyMate Editorial",
+  "tags": ["Online Courses", "AI Tools", "Scholarships & Learning"],
+  "heroImage": "https://fullyscholarships.com/wp-content/uploads/2025/09/Google-AI-Courses-for-Free.webp",
+  "source": {
+    "discoveryUrl": "https://fullyscholarships.com/google-ai-courses-for-free/",
+    "officialUrl": "https://www.skills.google/",
+    "sourceType": "provider_plus_secondary",
+    "sourceAttribution": "Opportunity discovered via Fully Scholarships; application links point to Google Skills."
+  },
+  "claims": [
+    {"id": "c_badge", "text": "The listed micro-courses offer skill badges rather than all representing free professional certificates.", "evidence": ["https://www.skills.google/course_templates/536", "https://www.skills.google/course_templates/539"], "risk": "medium", "checkedAt": "2026-10-26"},
+    {"id": "c_deadline", "text": "No fixed application deadline was identified for the self-paced courses.", "evidence": ["https://www.skills.google/"], "risk": "medium", "checkedAt": "2026-10-26"}
+  ],
+  "eligibility": { "geographies": ["global"], "studentLevel": ["any"], "language": "English", "requirements": "Google Skills account; individual course requirements vary.", "uncertainty": "Individual labs and advanced credentials may require credits or subscription."},
+  "opportunity": {"deadline": null, "deadlineKind": "rolling_or_unspecified", "fee": "free_or_variable", "credential": "skill_badge", "applicationUrl": "https://www.skills.google/", "isSponsored": false},
+  "sections": [
+    {"heading": "What is actually free?", "paragraphs": ["Google Skills lists short AI learning modules covering generative AI, large language models, image generation, attention, encoder-decoder architectures and Vertex AI. The original roundup describes these as free learning opportunities. Check each course page before assuming every hands-on lab or certificate on the wider platform is free.", "A Google Skills badge is different from a certificate or professional certification. Be precise when listing credentials on your CV."]},
+    {"heading": "Where to start", "paragraphs": ["Beginners can start with Introduction to Generative AI, then move to Large Language Models. If you want to understand the models, explore Attention and Encoder-Decoder Architecture. If your goal is building practical applications, move toward Vertex AI Studio."]},
+    {"heading": "Courses and official links", "courses": [
+      {"name": "Introduction to Generative AI", "duration": "~45 minutes", "level": "Introductory", "url": "https://www.skills.google/course_templates/536", "description": "Generative AI concepts and how the field differs from traditional machine learning."},
+      {"name": "Introduction to Large Language Models", "duration": "~1 hour", "level": "Introductory", "url": "https://www.skills.google/course_templates/539", "description": "LLM basics, uses, prompt tuning and Google development tools."},
+      {"name": "Introduction to Image Generation", "duration": "~30 minutes", "level": "Introductory", "url": "https://www.skills.google/course_templates/541", "description": "Diffusion models and the principles behind modern image generation."},
+      {"name": "Encoder-Decoder Architecture", "duration": "~30 minutes", "level": "Intermediate", "url": "https://www.skills.google/course_templates/543", "description": "Sequence-to-sequence tasks and a TensorFlow walkthrough."},
+      {"name": "Attention Mechanism", "duration": "Short course", "level": "Intermediate", "url": "https://www.skills.google/course_templates/537", "description": "How models focus on important parts of an input sequence."},
+      {"name": "Create Image Captioning Models", "duration": "Short course", "level": "Intermediate", "url": "https://www.skills.google/course_templates/542", "description": "Image-captioning model architecture, training and evaluation."},
+      {"name": "Introduction to Vertex AI Studio", "duration": "~2 hours", "level": "Introductory", "url": "https://www.skills.google/course_templates/552", "description": "Multimodal Gemini prototyping, prompt design and model tuning."}
+    ]},
+    {"heading": "The Scholarz 1 + 1 rule", "paragraphs": ["One badge plus one proof of work. After an LLM course, document a prompt experiment. After image generation, compare results. After Vertex AI Studio, prototype something useful.", "For Zimbabwean and other African learners, short online modules offer a low-cost way to explore AI, but a finished project often says more than a list of unattended courses."]},
+    {"heading": "Deadline and limitations", "paragraphs": ["No fixed deadline was identified for the listed self-paced courses. Access, badges, credits and fees can change, so check the official Google Skills page before enrolling."]}
+  ]
+}

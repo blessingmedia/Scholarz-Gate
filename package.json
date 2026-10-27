@@ -1,0 +1,17 @@
+{
+  "name": "scholarz-core",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Blogger-independent ApplyMate publication and Scholarz editorial harness",
+  "scripts": {
+    "dev": "node src/dev.mjs",
+    "build": "node scripts/build.mjs",
+    "test:built": "node --test tests/built.test.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "harness:demo": "node harness/cli.mjs simulate content/google-ai-courses.json",
+    "check": "npm test && node harness/cli.mjs validate content/google-ai-courses.json"
+  },
+  "engines": { "node": ">=22.12.0" },
+  "license": "UNLICENSED"
+}

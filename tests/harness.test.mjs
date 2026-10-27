@@ -1,0 +1,11 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {evaluateOpportunity,transition} from '../harness/policy.mjs';
+import {mintReviewToken,validateReviewToken} from '../harness/approval.mjs';
+const record=JSON.parse(readFileSync(new URL('../content/google-ai-courses.json',import.meta.url)));
+test('valid record passes evidence/source gate',()=>{const r=evaluateOpportunity(record);assert.equal(r.ok,true);assert.deepEqual(r.errors,[])});
+test('rejects title-only fake opportunity',()=>{const r=evaluateOpportunity({...record,claims:[],source:{},opportunity:{}});assert.equal(r.ok,false);assert.ok(r.errors.length>=3)});
+test('rejects invented guaranteed outcomes',()=>{const r=evaluateOpportunity({...record,summary:'100% guaranteed scholarship for everyone'});assert.equal(r.ok,false)});
+test('high-risk claims demand extra review',()=>{const r=evaluateOpportunity({...record,claims:[{...record.claims[0],risk:'high'}]});assert.ok(r.warnings.length>0)});
+test('only owner may approve or publish',()=>{assert.throws(()=>transition('review_ready','approved','agent'),/Owner authority/);assert.throws(()=>transition('discovered','published','owner'),/Forbidden/);assert.doesNotThrow(()=>transition('review_ready','approved','owner'))});
+test('review links are signed, scoped, expiring, and not publish authority',()=>{const secret='a'.repeat(64),payload={jobId:'j1',revision:1,ownerId:'o1',secret};const token=mintReviewToken({...payload,now:1000,ttlMs:5000});assert.equal(validateReviewToken(token,{...payload,now:2000}).ok,true);assert.equal(validateReviewToken(token,{...payload,now:6000}).ok,false);assert.equal(validateReviewToken(token,{...payload,revision:2,now:2000}).ok,false);assert.equal(validateReviewToken(token+'x',{...payload,now:2000}).ok,false)});
